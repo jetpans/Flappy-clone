@@ -15,7 +15,7 @@ let removal = [];
 let frozen = false;
 let score = 0;
 
-//Učitavanje slika i postavljanje "postavki programiranja"
+//Učitavanje slika i postavljanje "postavki programiranja"///////////////////////////////////////////////////////////////////////////////////////////
 function preload() {
   birdimg = loadImage("assets/bird.png");
   pipeimg = loadImage("assets/pipe.png");
@@ -33,7 +33,7 @@ function setup() {
 bird = new Bird(dimx * 0.2, dimy / 2, birdsize);
 
 function draw() {
-  // COLISION CHECKS
+  // COLISION CHECKS ///////////////////////////////////////////////////////////////////////////////////////////
   if (bird.y + bird.size / 2 > dimy - 20 || bird.y - bird.size / 2 < 0) {
     frozen = true;
   }
@@ -63,7 +63,7 @@ function draw() {
     }
   }
 
-  //TEXT RESET
+  //TEXT RESET ///////////////////////////////////////////////////////////////////////////////////////////
   if (frozen) {
     textSize(dimx * 0.067);
     textAlign(CENTER, CENTER);
@@ -78,11 +78,10 @@ function draw() {
     fill("#065424");
     stroke("#065424");
     rect(dimx, dimy - 20, 0, dimy);
-    //SCORE
 
-    // BIRD LOGIC
+    // BIRD LOGIC///////////////////////////////////////////////////////////////////////////////////////////
     bird.update();
-    //bird draw
+    //bird draw///////////////////////////////////////////////////////////////////////////////////////////
     image(
       birdimg,
       bird.x - birdsize / 2,
@@ -95,7 +94,7 @@ function draw() {
     if (bird.v === 0) {
       bird.velocitydir *= -1;
     }
-    // PIPE UPDATE
+    // PIPE UPDATE ///////////////////////////////////////////////////////////////////////////////////////////
     if (path % pipespacing === 0) {
       randy1 = holeoffset + Math.random() * (dimy - holeoffset * 2 - holesize);
       console.log(randy1);
@@ -104,7 +103,7 @@ function draw() {
     }
     removal = [];
     for (let i = 0; i < pipes.length; i++) {
-      //draw pipe
+      //draw pipe ///////////////////////////////////////////////////////////////////////////////////////////
 
       obj = pipes[i];
       pipes[i].update();
@@ -136,6 +135,7 @@ function draw() {
 
     path += pipespeed;
   }
+  //SCORE ///////////////////////////////////////////////////////////////////////////////////////////
   textSize(dimx * 0.09);
   textAlign(CENTER, CENTER);
   textAlign(TOP);
